@@ -48,5 +48,39 @@ namespace AutoCalculator
 
             }
         }
+
+        static int GetTeslaCode(string param)
+        {
+            var result = Int32.Parse(param) > 9 ? Int32.Parse(param) : Int32.Parse(param) * 2;
+
+            if (result >= 10)
+            {
+                int cnt = result.ToString().Length;
+
+                while (result >= 10)
+                {
+                    var arr = new ArrayList();
+                    var temp = result;
+
+                    // 한 자리 수로 만드는 알고리즘
+                    for (var i = cnt; i > 0; i--)
+                    {
+                        arr.Add(temp / (int)Math.Pow(10, i - 1));
+                        temp = temp % (int)Math.Pow(10, i - 1);
+                    }
+
+                    int sum = 0;
+                    for (var i = 0; i < arr.Count; i++)
+                    {
+                        sum += (int)arr.ToArray()[i];
+                    }
+
+                    result = sum;
+                }
+            }
+
+            return result;
+        }
+
     }
 }
