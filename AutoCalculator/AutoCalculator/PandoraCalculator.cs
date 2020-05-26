@@ -8,6 +8,16 @@ namespace AutoCalculator
 {
     public class PandoraCalculator
     {
+        public static double GetTeslaCode(int param)
+        {
+            return GetTeslaCode(param.ToString());
+        }
+
+        public static double GetTeslaCode(double param)
+        {
+            return GetTeslaCode(param.ToString());
+        }
+
         public static double GetTeslaCode(string param)
         {
             var result = 0.0;
