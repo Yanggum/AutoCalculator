@@ -1,20 +1,25 @@
 ﻿using System;
 using System.Collections;
-using System.Runtime.InteropServices.ComTypes;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Text;
 using System.Threading;
 
 namespace AutoCalculator
 {
-    class Program
+    public class SingularityCalculator
     {
-        public static double  seed = 0.0f;
+        Thread t1 = new Thread(new ThreadStart(SingularityProc));
+        Thread t2 = new Thread(new ThreadStart(SingularityProc3));
+        Thread t3 = new Thread(new ThreadStart(SingularityProc9));
+        public static double seed = 0.0f;
         public static void SingularityProc()
         {
             var charList = new ArrayList();
 
             var rand = new Random();
             bool isSeedTriggered = true;
-//            double seed = 0.0f;
+            //            double seed = 0.0f;
 
             while (true)
             {
@@ -35,7 +40,7 @@ namespace AutoCalculator
 
             var rand = new Random();
             bool isSeedTriggered = true;
-//            double seed = 0.0f;
+            //            double seed = 0.0f;
 
             while (true)
             {
@@ -56,7 +61,7 @@ namespace AutoCalculator
 
             var rand = new Random();
             bool isSeedTriggered = true;
-            double seed = 0.0f;
+            //            double seed = 0.0f;
 
             while (true)
             {
@@ -71,19 +76,23 @@ namespace AutoCalculator
             }
         }
 
-
-
-        static void Main(string[] args)
+        public SingularityCalculator()
         {
-            Thread t1 = new Thread(new ThreadStart(SingularityProc));
-            Thread t2 = new Thread(new ThreadStart(SingularityProc3));
-            Thread t3 = new Thread(new ThreadStart(SingularityProc9));
-
             t1.Start();
             t2.Start();
             t3.Start();
+        }
 
+        //~SingularityCalculator()
+        //{
+        //    t1.Abort();
+        //    t2.Abort();
+        //    t3.Abort();
+        //}
 
+        public static double getCurrentSingNum()
+        {
+            return seed;
         }
     }
 }
