@@ -20,7 +20,23 @@ namespace AutoCalculator
                 originVal += l.Create();
                 originVal += d.Create();
 
-                Console.WriteLine(originVal);
+                if (originVal > 0)
+                {
+                    Console.WriteLine("1");
+                    //
+                }
+                else if (originVal < 0)
+                {
+                    Console.WriteLine("0");
+                    //
+                }
+                else
+                {
+                    Random rand = new Random();
+                    originVal = rand.Next(0, 1) == 0 ? d.Create() : l.Create();
+                    continue;
+ 
+                }
             }
         }
     }
