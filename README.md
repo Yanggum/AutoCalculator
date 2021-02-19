@@ -1,1 +1,3 @@
 # AutoCalculator
+
+Origin of StrongAI
